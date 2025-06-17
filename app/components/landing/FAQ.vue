@@ -60,4 +60,4 @@ const ui = {
 	trigger: 'px-3 py-2 rounded-lg hover:bg-muted/50 data-[state=active]:text-highlighted data-[state=inactive]:text-muted',
 	label: 'truncate'
 }
-</script>
+</template>

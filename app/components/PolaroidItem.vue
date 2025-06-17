@@ -25,4 +25,4 @@ defineProps<{
 	}
 	index: number
 }>()
-</script>
+</template>

@@ -65,17 +65,20 @@
 							{{ event.title }}
 						</h3>
 
-						<ULink
+						<UButton
 							v-if="event.url"
 							target="_blank"
-							class="inline-flex items-center mt-2 text-sm font-medium text-primary"
+							:label="event.category === 'Podcast' ? 'Listen' : 'Watch'"
+							variant="link"
+							class="p-0 pt-2 gap-0"
 						>
-							{{ event.category === 'Podcast' ? 'Listen' : 'Watch' }}
-							<UIcon
-								name="i-lucide-arrow-right"
-								class="size-4 transition-all opacity-0 group-hover:translate-x-1 group-hover:opacity-100"
-							/>
-						</ULink>
+							<template #trailing>
+								<UIcon
+									name="i-lucide-arrow-right"
+									class="size-4 transition-all opacity-0 group-hover:translate-x-1 group-hover:opacity-100"
+								/>
+							</template>
+						</UButton>
 					</div>
 				</div>
 			</div>
@@ -129,4 +132,4 @@ function formatDate(dateString: Date): string {
 	return new Date(dateString).toLocaleDateString('en-US', { year: 'numeric',
 		month: 'long' })
 }
-</script>
+</template>

@@ -64,4 +64,4 @@ const [ { data: navigation }, { data: files } ] = await Promise.all([
 		transform: data => data.flat()
 	})
 ])
-</script>
+</template>

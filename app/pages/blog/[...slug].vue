@@ -65,10 +65,10 @@
 </template>
 
 <script setup lang="ts">
-import type { ContentNavigationItem } from '@nuxt/content'
 import {
-	findPageBreadcrumb, mapContentNavigation
+  findPageBreadcrumb, mapContentNavigation
 } from '#ui-pro/utils/content'
+import type { ContentNavigationItem } from '@nuxt/content'
 
 const route = useRoute()
 
@@ -111,7 +111,7 @@ useSeoMeta({
 	ogTitle: title
 })
 
-const articleLink = computed(() => `${window.location}${route.path}`)
+const articleLink = computed(() => `${window?.location}`)
 
 const formatDate = (dateString: Date) => {
 	return new Date(dateString).toLocaleDateString('en-US', {
@@ -120,4 +120,4 @@ const formatDate = (dateString: Date) => {
 		day: 'numeric'
 	})
 }
-</script>
+</template>

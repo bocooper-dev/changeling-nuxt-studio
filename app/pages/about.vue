@@ -59,4 +59,4 @@ useSeoMeta({
 	description: page.value?.seo?.description || page.value?.description,
 	ogDescription: page.value?.seo?.description || page.value?.description
 })
-</script>
+</template>

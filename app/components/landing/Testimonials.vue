@@ -11,7 +11,7 @@
 			loop
 			dots
 			:ui="{
-				viewport: '-mx-4 sm:-mx-12 lg:-mx-16 bg-elevated/50'
+				viewport: '-mx-4 sm:-mx-12 lg:-mx-16 bg-elevated/50 max-w-(--ui-container)'
 			}"
 		>
 			<UPageCTA
@@ -39,4 +39,4 @@ import type { IndexCollectionItem } from '@nuxt/content'
 defineProps<{
 	page: IndexCollectionItem
 }>()
-</script>
+</template>
