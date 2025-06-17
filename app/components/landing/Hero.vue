@@ -190,4 +190,4 @@ const {
 defineProps<{
 	page: IndexCollectionItem
 }>()
-</template>
+</script>

@@ -66,7 +66,8 @@
 
 <script setup lang="ts">
 import {
-  findPageBreadcrumb, mapContentNavigation
+	findPageBreadcrumb,
+	mapContentNavigation
 } from '#ui-pro/utils/content'
 import type { ContentNavigationItem } from '@nuxt/content'
 
@@ -120,4 +121,4 @@ const formatDate = (dateString: Date) => {
 		day: 'numeric'
 	})
 }
-</template>
+</script>

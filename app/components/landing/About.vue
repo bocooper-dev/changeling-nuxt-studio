@@ -16,7 +16,7 @@ import type { IndexCollectionItem } from '@nuxt/content'
 defineProps<{
 	page: IndexCollectionItem
 }>()
-</template>
+</script>
 
 <style scoped>
 

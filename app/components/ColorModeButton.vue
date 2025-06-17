@@ -58,7 +58,7 @@ const startViewTransition = (event: MouseEvent) => {
 		)
 	})
 }
-</template>
+</script>
 
 <style>
 ::view-transition-old(root),

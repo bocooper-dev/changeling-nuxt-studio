@@ -21,4 +21,4 @@
 
 <script setup lang="ts">
 const { footer } = useAppConfig()
-</template>
+</script>
