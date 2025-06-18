@@ -433,9 +433,7 @@ const filteredProducts = computed((): Product[] => {
 
 // 🔍 Check if any filters are active
 const hasActiveFilters = computed(() => {
-	return activeFilters.category !== ''
-	  || activeFilters.featuredOnly
-	  || activeFilters.sortBy !== 'newest'
+	return activeFilters.category !== '' || activeFilters.featuredOnly || activeFilters.sortBy !== 'newest'
 })
 
 // 🎯 Interactive Functions
@@ -486,12 +484,14 @@ watch(() => activeFilters, () => {
 	})
 }, { deep: true })
 
-// 📊 Console log for debugging (remove in production)
-console.log('🏪 Products page loaded:', {
-	totalProducts: products.value?.length,
-	categories: categoryOptions.value,
-	filters: activeFilters
-})
+// 📊 Console log for debugging (only in development)
+if (process.env.NODE_ENV === 'development') {
+	console.log('🏪 Products page loaded:', {
+		totalProducts: products.value?.length,
+		categories: categoryOptions.value,
+		filters: activeFilters
+	})
+}
 </script>
 
 <style scoped>
