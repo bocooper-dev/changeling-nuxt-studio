@@ -1,5 +1,7 @@
 import {
-	defineCollection, defineContentConfig, z
+	defineCollection,
+	defineContentConfig,
+	z
 } from '@nuxt/content'
 
 const createBaseSchema = () => z.object({
@@ -127,6 +129,56 @@ export default defineContentConfig({
 			schema: z.object({
 				content: z.object({}),
 				images: z.array(createImageSchema())
+			})
+		}),
+		// 📦 Products collection - defines the structure for our product pages
+		products: defineCollection({
+			type: 'page', // 📄 'page' type means markdown files with frontmatter + content
+			source: 'products/*.md', // 📁 Look for .md files in /content/products/ directory
+			schema: z.object({
+				// 💰 Pricing information
+				price: z.number().positive(), // 💵 Product price (must be positive number)
+				originalPrice: z.number().positive().optional(), // 🏷️ Original price for showing discounts (optional)
+
+				// 🖼️ Visual elements
+				image: z.string().nonempty().editor({ input: 'media' }), // 📸 Product image (Nuxt Studio media picker)
+				gallery: z.array(createImageSchema()).optional(), // 🖼️ Additional product images (optional)
+
+				// 🏷️ Product categorization and metadata
+				category: z.string().nonempty(), // 📂 Product category (e.g., "Electronics", "Clothing")
+				tags: z.array(z.string()).optional(), // 🏷️ Product tags for filtering (optional)
+				sku: z.string().nonempty(), // 🔢 Stock Keeping Unit - unique product identifier
+
+				// 📊 Product status and availability
+				inStock: z.boolean().default(true), // ✅ Whether product is available (defaults to true)
+				featured: z.boolean().default(false), // ⭐ Whether to highlight this product (defaults to false)
+
+				// 📅 Important dates
+				publishedAt: z.date(), // 📅 When product was published
+				updatedAt: z.date().optional(), // 📅 Last update date (optional)
+
+				// 🎯 Product specifications and features
+				features: z.array(z.string()).optional(), // ✨ Key product features (optional)
+				specifications: z.object({ // 🔧 Technical specs (all optional)
+					dimensions: z.string().optional(), // 📏 Product dimensions
+					weight: z.string().optional(), // ⚖️ Product weight
+					material: z.string().optional(), // 🧱 What it's made of
+					color: z.string().optional() // 🎨 Available colors
+				}).optional(),
+
+				// 🚀 Call-to-action configuration
+				cta: z.object({
+					label: z.string().default('Add to Cart'), // 🛒 Button text (defaults to "Add to Cart")
+					url: z.string().url().optional(), // 🔗 External purchase link (optional)
+					enabled: z.boolean().default(true) // ✅ Whether to show CTA button (defaults to true)
+				}).optional(),
+
+				// 📈 SEO and social sharing
+				seo: z.object({
+					title: z.string().optional(), // 📝 Custom SEO title (optional)
+					description: z.string().optional(), // 📝 Custom SEO description (optional)
+					keywords: z.array(z.string()).optional() // 🔍 SEO keywords (optional)
+				}).optional()
 			})
 		})
 	}
